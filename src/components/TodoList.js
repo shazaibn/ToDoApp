@@ -10,7 +10,9 @@ function TodoList() {
       return;
     }
 
-    const newTodos = [todo, ...todos];
+    const newTodos = [todo, ...todos]; // TODO: Call wasmflow component to update list with new item. 
+                                       // Expected input :  todo(string)
+                                       // Expected output: array(strings)
 
     setTodos(newTodos);
     console.log(...todos);
@@ -21,11 +23,14 @@ function TodoList() {
       return;
     }
 
-    setTodos(prev => prev.map(item => (item.id === todoId ? newValue : item)));
+    setTodos(prev => prev.map(item => (item.id === todoId ? newValue : item))); // TODO: Call wasmflow component to update one specific task
+                                       // Expected input(s): ID(int) and new todo(string)
   };
 
   const removeTodo = id => {
-    const removedArr = [...todos].filter(todo => todo.id !== id);
+    const removedArr = [...todos].filter(todo => todo.id !== id); // TODO: Call wasmflow component to remove one specific task
+                                       // Expected input: ID(int)
+                                       // Expected output: length of array(int)?
 
     setTodos(removedArr);
   };
@@ -46,8 +51,12 @@ function TodoList() {
       <TodoForm onSubmit={addTodo} />
       <Todo
         todos={todos}
-        completeTodo={completeTodo}
-        removeTodo={removeTodo}
+        // TODO: Ask Jarrod:
+        // Leave js funcs and call wasmflow in func?
+        // Or call wasmflow from here?
+
+        removeTodo={removeTodo}     
+        completeTodo={completeTodo} 
         updateTodo={updateTodo}
       />
     </>
